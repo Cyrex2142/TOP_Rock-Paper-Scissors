@@ -1,4 +1,13 @@
-// Random Generated Computer Hand
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Console Rock Paper Scissors Game</title>
+</head>
+<body>
+    <script>
         function computerPlay() {
             let gen_number = Math.floor(Math.random()*3 + 1);
             let computerHand = '';
@@ -12,7 +21,7 @@
             return computerHand;
             
         };
-// Player Prompt Selected Hand
+
         function playerHand() {
             let playerSelection = '';
             const rockCheck = /rock/i;
@@ -34,12 +43,15 @@
                 };
             };
         };
-// Play Single Round
+
+        let playerWins = 0;
+
         function playRound(playerSelection, computerSelection) {
             if (playerSelection === 'Rock') {
                 if (computerSelection === 'Paper') {
                     console.log('Paper covers rock! You Lose!');
                 } else if (computerSelection === 'Scissors') {
+                    playerWins++;
                     console.log('Rock crushes Scissors! You Win!');
                 } else if (computerSelection === 'Rock') {
                     console.log('Both chose Rock! Tie!');
@@ -50,10 +62,12 @@
                 } else if (computerSelection === 'Scissors') {
                     console.log('Scissors cut Paper! You Lose!');
                 } else if (computerSelection === 'Rock') {
+                    playerWins++;
                     console.log('Paper coveers Rock! You Win!');
                 };
             } else if (playerSelection === 'Scissors') {
                 if (computerSelection === 'Paper') {
+                    playerWins++;
                     console.log('Scissors cut Paper! You Win!');
                 } else if (computerSelection === 'Scissors') {
                     console.log('Both chose Scissors! Tie!!');
@@ -62,6 +76,20 @@
                 };
             };
         };
-        let playerSelection = playerHand();
-        let computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
+
+        function game() {
+            let roundCount = 0;
+            for (let i = 0; i < 5; i++) {
+                roundCount++;
+                console.log('Round: ' + roundCount);
+                let playerSelection = playerHand();
+                let computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+            }
+            console.log('You won: ' + playerWins + ' Out of 5 rounds!');
+        }
+
+        game();
+    </script>
+</body>
+</html>
