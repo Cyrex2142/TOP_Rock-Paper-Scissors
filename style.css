@@ -1,0 +1,93 @@
+body {
+    font-family: monospace;
+    color: black;
+    display: grid;
+    place-items: center center;
+
+}
+/*--------Boxed Game Area--------*/
+.game-container {
+    display: grid ;
+    grid-template-rows: 80% 20%;
+    
+    width: 90vw;
+    height: 90vh;
+}
+/*--------Boxed Play Area--------*/
+.play-container {
+    grid-row: 1;
+    display: grid;
+    
+    grid-template-columns: 50% 50%;
+}
+.player-side {
+    display: grid;
+    grid-template-rows: 80% 20%;
+    grid-column: 1;
+    
+}
+.player-btns {
+    display: grid;
+    grid-row: 2;
+    width: inherit;
+    grid-template-columns: 33% 33% 33%;
+    padding-left: 1%;
+}
+.player-selection {
+    display: grid;
+    place-items: center;
+}
+
+.rock {
+    grid-column: 1;
+    background-image: url('icons8-hand-rock-50.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75px 75px;
+    border: none;
+    background-color: transparent;
+}
+#paper {
+    grid-column: 2;
+    background-image: url('icons8-hand-50.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75px 75px;
+    border: none;
+    background-color: transparent;
+}
+
+#scissors {
+    grid-column: 3;
+    background-image: url('icons8-hand-scissors-50.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75px 75px;
+    border: none;
+    background-color: transparent;
+}
+.computer-side {
+    display: grid;
+    grid-column: 2;
+    
+    place-items: center;
+}
+/*--------Boxed Result Area--------*/
+.result-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
+.scoreboard {
+    display: grid;
+    
+    text-align: center;
+}
+#score-num {
+    margin: 0;
+}
+.game-result {
+    display: grid;
+    
+    place-items: center;
+}

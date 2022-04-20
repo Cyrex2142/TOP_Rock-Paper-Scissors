@@ -4,10 +4,133 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Console Rock Paper Scissors Game</title>
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+            let playerSelection = '';
+            let computerSelection = '';
+            let playerWins = 0;
+
+            function computerPlay() {
+                let gen_number = Math.floor(Math.random()*3 + 1);
+                let computerHand = '';
+                if (gen_number == 1) {
+                    computerHand = 'Rock';
+                    document.getElementById('computerChoice').src = 'icons8-hand-rock-400.png';
+
+                } else if (gen_number == 2) {
+                    computerHand = 'Paper';
+                    document.getElementById('computerChoice').src = 'icons8-hand-400.png';
+                } else if (gen_number == 3) {
+                    computerHand = 'Scissors';
+                    document.getElementById('computerChoice').src = 'icons8-hand-scissors-400.png';
+                    document.getElementById('computerChoice').style.width = '350px';
+                    document.getElementById('computerChoice').style.height = '350px';
+                };
+                return computerHand;
+            };
+
+            function playRound(playerSelection, computerSelection) {
+            if (playerSelection === 'Rock') {
+                if (computerSelection === 'Paper') {
+                    document.getElementById('game-result').innerText = 'Paper covers rock! You Lose!';
+                } else if (computerSelection === 'Scissors') {
+                    playerWins++;
+                    document.getElementById('score-num').innerText = playerWins;
+                    document.getElementById('game-result').innerText = 'Rock crushes Scissors! You Win!';
+                } else if (computerSelection === 'Rock') {
+                    document.getElementById('game-result').innerText = 'Both chose Rock! Tie!';
+                };
+            } else if (playerSelection === 'Paper') {
+                if (computerSelection === 'Paper') {
+                    document.getElementById('game-result').innerText = 'Both chose Paper! Tie!';
+                } else if (computerSelection === 'Scissors') {
+                    document.getElementById('game-result').innerText ='Scissors cut Paper! You Lose!';
+                } else if (computerSelection === 'Rock') {
+                    playerWins++;
+                    document.getElementById('score-num').innerText = playerWins;
+                    document.getElementById('game-result').innerText ='Paper coveers Rock! You Win!';
+                };
+            } else if (playerSelection === 'Scissors') {
+                if (computerSelection === 'Paper') {
+                    playerWins++;
+                    document.getElementById('score-num').innerText = playerWins;
+                    document.getElementById('game-result').innerText ='Scissors cut Paper! You Win!';
+                } else if (computerSelection === 'Scissors') {
+                    document.getElementById('game-result').innerText ='Both chose Scissors! Tie!!';
+                } else if (computerSelection === 'Rock') {
+                    document.getElementById('game-result').innerText ='Rock crushes Scissors! You Lose!';
+                };
+            };
+        };
+
+    </script>
 </head>
 <body>
-    <script src="/script.js">
-    </script>
+    <main>
+        <div class="game-container">
+            <div class="play-container">
+                <div class="player-side">
+                    <div class="player-selection">
+                        <img id="playerChoice" src="" alt="">
+                    </div>
+                    <div class="player-btns">
+                        <input type="button" class="rock" >
+                        <input type="button" id="paper" >
+                        <input type="button" id="scissors" >
+                    </div>
+            <script>
+                function checkCalls() {
+                    console.log('player' + playerSelection);
+                    console.log(computerSelection);
+                }
+
+                const paperBtn = document.querySelector('#paper');
+                function paperChange() {
+                    playerSelection = 'Paper';
+                    document.getElementById('playerChoice').src = 'icons8-hand-400.png';
+                    computerSelection = computerPlay();
+                    playRound(playerSelection, computerSelection);
+                }
+                paperBtn.addEventListener('click',paperChange)
+
+                const scissorsBtn = document.querySelector('#scissors');
+                function scissorsChange() {
+                    playerSelection = 'Scissors';
+                    document.getElementById('playerChoice').src = 'icons8-hand-scissors-400.png';
+                    document.getElementById('playerChoice').style.width = '350px';
+                    document.getElementById('playerChoice').style.height = '350px';
+                    computerSelection = computerPlay();
+                    playRound(playerSelection, computerSelection);
+                }
+                scissorsBtn.addEventListener('click',scissorsChange)
+
+                const rockBtn = document.querySelector('.rock');
+                function rockChange() {
+                    playerSelection = 'Rock';
+                    document.getElementById('playerChoice').src = 'icons8-hand-rock-400.png';
+                    computerSelection = computerPlay();
+                    playRound(playerSelection, computerSelection);
+                }
+                rockBtn.addEventListener('click',rockChange)
+
+
+            </script>
+                </div>
+                <div class="computer-side">
+                    <img id="computerChoice" src="" alt="">
+                </div>
+            </div>
+            <div class="result-container">
+                <div class="scoreboard">
+                    <h2>Your Score:</h2>
+                    <h1 id="score-num">0</h2>
+                </div>
+                <div class="game-result">
+                    <h1 id="game-result"></h1>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

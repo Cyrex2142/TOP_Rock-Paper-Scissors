@@ -1,4 +1,13 @@
 
+        const userChoice = function() {
+            if(document.getElementById('rock').addEventListener('click')) {
+                playerSelection = 'Rock';
+            } else if (document.getElementById('paper').addEventListener('click')) {
+                playerSelection = 'Paper';
+            } else if (document.getElementById('scissors').addEventListener('click')) {
+                playerSelection = 'Scissors';
+            }
+        }    
         function computerPlay() {
             let gen_number = Math.floor(Math.random()*3 + 1);
             let computerHand = '';
@@ -35,35 +44,39 @@
             };
         };
 
-        let playerWins = 0;
+        
 
         function playRound(playerSelection, computerSelection) {
+            let playerWins = 0;
             if (playerSelection === 'Rock') {
                 if (computerSelection === 'Paper') {
-                    console.log('Paper covers rock! You Lose!');
+                    document.getElementById('game-result').innerText = 'Paper covers rock! You Lose!';
                 } else if (computerSelection === 'Scissors') {
                     playerWins++;
-                    console.log('Rock crushes Scissors! You Win!');
+                    document.getElementById('score-num').innerText = playerWins;
+                    document.getElementById('game-result').innerText = 'Rock crushes Scissors! You Win!';
                 } else if (computerSelection === 'Rock') {
-                    console.log('Both chose Rock! Tie!');
+                    document.getElementById('game-result').innerText = 'Both chose Rock! Tie!';
                 };
             } else if (playerSelection === 'Paper') {
                 if (computerSelection === 'Paper') {
-                    console.log('Both chose Paper! Tie!');
+                    document.getElementById('game-result').innerText = 'Both chose Paper! Tie!';
                 } else if (computerSelection === 'Scissors') {
-                    console.log('Scissors cut Paper! You Lose!');
+                    document.getElementById('game-result').innerText ='Scissors cut Paper! You Lose!';
                 } else if (computerSelection === 'Rock') {
                     playerWins++;
-                    console.log('Paper coveers Rock! You Win!');
+                    document.getElementById('score-num').innerText = playerWins;
+                    document.getElementById('game-result').innerText ='Paper coveers Rock! You Win!';
                 };
             } else if (playerSelection === 'Scissors') {
                 if (computerSelection === 'Paper') {
                     playerWins++;
-                    console.log('Scissors cut Paper! You Win!');
+                    document.getElementById('score-num').innerText = playerWins;
+                    document.getElementById('game-result').innerText ='Scissors cut Paper! You Win!';
                 } else if (computerSelection === 'Scissors') {
-                    console.log('Both chose Scissors! Tie!!');
+                    document.getElementById('game-result').innerText ='Both chose Scissors! Tie!!';
                 } else if (computerSelection === 'Rock') {
-                    console.log('Rock crushes Scissors! You Lose!');
+                    document.getElementById('game-result').innerText ='Rock crushes Scissors! You Lose!';
                 };
             };
         };
@@ -79,5 +92,3 @@
             }
             console.log('You won: ' + playerWins + ' Out of 5 rounds!');
         }
-
-        game();
